@@ -1,17 +1,17 @@
 {
-  "name": "alpha",
+  "name": "myapp",
   "description": "",
   "version": "1.0.0",
   "private": true,
   "license": "UNLICENSED",
   "config": {
-    "API_HOST": "ws://localhost/gwf/",
+    "API_HOST": "ws://localhost:9064",
     "PORT": 6060,
     "ENABLE_SSO": false
   },
   "genx": {
     "app": {
-      "rootElement": "alpha-root"
+      "rootElement": "myapp-root"
     },
     "federation": {
       "remotes": [
@@ -23,7 +23,7 @@
     "baseline": "npm run clean && npm run bootstrap",
     "bootstrap": "npm install --no-fund --no-audit",
     "bootstrap:ci": "npm ci --no-fund --no-audit",
-    "build": "genx build -e ENABLE_SSO",
+    "build": "genx build -e ENABLE_SSO -e NODE_ENV=production -e API_HOST=ws://localhost:9064",
     "build:stats": "genx analyze",
     "clean": "genx clean dist node_modules",
     "dev": "genx dev -e API_HOST,ENABLE_SSO",

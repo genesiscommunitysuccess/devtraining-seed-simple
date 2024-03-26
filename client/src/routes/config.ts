@@ -59,7 +59,7 @@ export class MainRouterConfig extends FoundationRouterConfiguration<LoginSetting
             ...ssoSettings,
           });
           return define({
-            name: `alpha-root-login`,
+            name: `myapp-root-login`,
             /**
              * You can augment the template and styles here when needed.
              */

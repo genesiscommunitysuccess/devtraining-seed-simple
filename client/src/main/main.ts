@@ -14,7 +14,8 @@ import designTokens from '../styles/design-tokens.json';
 import { MainStyles as styles } from './main.styles';
 import { DynamicTemplate as template, LoadingTemplate, MainTemplate } from './main.template';
 
-const name = 'alpha-root';
+const name = 'myapp-root';
+
 
 /**
  * @fires store-connected - Fired when the store is connected.
