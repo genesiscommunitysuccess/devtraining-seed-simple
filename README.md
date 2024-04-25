@@ -1,18 +1,18 @@
 # devtraining-seed-simple
 
-Initial project for Genesis Application to support [developer training](https://docs.genesis.global/secure/getting-started/developer-training/training-intro/). If you want to see the complete application built during the training use this [repo](https://github.com/genesiscommunitysuccess/devtraining-alpha) as a reference.
+Initial project for Genesis Application to support [developer training](https://learn.genesis.global/docs/getting-started/developer-training/training-intro/). If you want to see the complete application built during the training use this [repo](https://github.com/genesiscommunitysuccess/devtraining-alpha-simple) as a reference.
 
 # Start the training
 
-Go to the developer training and follow the [agenda](https://docs.genesis.global/secure/getting-started/developer-training/training-intro/#programme). There are 5 sessions or days; each session covers specific resources of the platform to build a Trade & Positions application from the very beginning.
+Go to the developer training and follow the [agenda](https://learn.genesis.global/docs/getting-started/developer-training/training-intro/#programme). There are 5 sessions or days; each session covers specific resources of the platform to build a Trade & Positions application from the very beginning.
 
 ## Further information
 
-If you are looking for a simple application running check the [Quick Start](https://docs.genesis.global/secure/getting-started/quick-start/) guide.
+If you are looking for a simple application running check the [Quick Start](https://learn.genesis.global/docs/getting-started/quick-start/) guide.
 
-If you are looking for advanced modules and how to use them head to [Go To The Next Level](https://docs.genesis.global/secure/getting-started/go-to-the-next-level/introduction/)
+If you are looking for advanced modules and how to use them head to [Go To The Next Level](https://learn.genesis.global/docs/getting-started/quick-start/go_to_training/)
 
-If you need an introduction to the Genesis platform and its modules it's worth heading [here](https://docs.genesis.global/secure/getting-started/learn-the-basics/simple-introduction/).
+If you need an introduction to the Genesis platform and its modules it's worth heading [here](https://learn.genesis.global/docs/getting-started/learn-the-basics/simple-introduction/).
 
 
 ## Project Structure
