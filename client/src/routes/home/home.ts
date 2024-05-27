@@ -1,7 +1,6 @@
-import { customElement, FASTElement } from '@microsoft/fast-element';
+import { customElement, FASTElement } from '@genesislcap/web-core';
 import { HomeStyles as styles } from './home.styles';
 import { HomeTemplate as template } from './home.template';
-
 
 
 @customElement({
@@ -11,6 +10,6 @@ import { HomeTemplate as template } from './home.template';
 })
 
 
-export class Home extends FASTElement {
+export class Home extends GenesisElement {
 
 }
