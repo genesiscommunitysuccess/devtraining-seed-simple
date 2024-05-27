@@ -1,4 +1,4 @@
-import {html, ref, repeat} from '@genesislcap/web-core';
+import {html} from '@genesislcap/web-core';
 import type {Home} from './home';
 
 
