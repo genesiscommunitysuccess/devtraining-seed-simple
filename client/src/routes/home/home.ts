@@ -1,4 +1,4 @@
-import { customElement, FASTElement } from '@genesislcap/web-core';
+import { customElement, GenesisElement, observable} from '@genesislcap/web-core';
 import { HomeStyles as styles } from './home.styles';
 import { HomeTemplate as template } from './home.template';
 
