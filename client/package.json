@@ -87,7 +87,7 @@
   },
   "dependencies": {
     "@genesislcap/foundation-comms": "14.181.1",
-    "@genesislcap/web-core": "14.178.0",
+    "@genesislcap/web-core": "14.181.1",
     "@genesislcap/foundation-entity-management": "14.181.1",
     "@genesislcap/foundation-events": "14.181.1",
     "@genesislcap/foundation-forms": "14.181.1",
@@ -103,6 +103,7 @@
     "@genesislcap/foundation-zero": "14.181.1",
     "@genesislcap/foundation-zero-grid-pro": "14.181.1",
     "@genesislcap/g2plot-chart": "14.181.1",
+    "@genesislcap/foundation-rapid": "14.181.1",
 
     "rxjs": "^7.5.4",
     "tslib": "^2.3.1"
