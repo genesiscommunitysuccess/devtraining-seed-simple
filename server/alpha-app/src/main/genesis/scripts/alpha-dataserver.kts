@@ -15,7 +15,7 @@ package scripts
  */
 
 dataServer {
-    query("ALL_TRADES", TRADE)
+    query("ALL_TRADES", TRADE_VIEW)
     query("ALL_PRICES", TRADE){
         where{
           it.price > 10.0
@@ -25,4 +25,6 @@ dataServer {
             PRICE
         }
     }
+    query("ALL_INSTRUMENTS",INSTRUMENT)
+    query("ALL_COUNTERPARTIES",COUNTERPARTY)
 }
