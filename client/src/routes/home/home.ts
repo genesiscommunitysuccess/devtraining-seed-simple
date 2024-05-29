@@ -1,10 +1,11 @@
-import { customElement, GenesisElement, observable} from '@genesislcap/web-core';
+import {customElement, GenesisElement, observable} from '@genesislcap/web-core';
 import { HomeStyles as styles } from './home.styles';
 import { HomeTemplate as template } from './home.template';
 import {EntityManagement} from '@genesislcap/foundation-entity-management';
+import {RapidGridPro} from '@genesislcap/rapid-grid-pro';
+import {Connect} from '@genesislcap/foundation-comms';
 
-EntityManagement; //imported from '@genesislcap/foundation-entity-management' to display Trade grid
-
+EntityManagement;
 
 //describes the default config for the grid columns
 const defaultColumnConfig = {
@@ -41,6 +42,21 @@ const COLUMNS = [
     field: 'DIRECTION',
     headerName: 'Direction',
   },
+  {
+    ...defaultColumnConfig,
+    field: 'TRADE_STATUS',
+    headerName: 'STATUS',
+  },
+  {
+    ...defaultColumnConfig,
+    field: 'ENTERED_BY',
+    headerName: 'USER',
+  },
+  {
+    ...defaultColumnConfig,
+    field: 'TRADE_DATE',
+    headerName: 'DATE',
+  },
 ];
 
 
@@ -52,9 +68,10 @@ const COLUMNS = [
 
 
 export class Home extends GenesisElement {
-  @observable columns: any = COLUMNS;
 
-  constructor() {
-    super();
-  }
+    @observable columns: any = COLUMNS;
+
+    public positionsGrid!: RapidGridPro;
+
+    @Connect connection: Connect;
 }

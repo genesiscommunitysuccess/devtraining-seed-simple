@@ -13,18 +13,17 @@ import global.genesis.dictionary.pal.table.TableFieldType
 
 tables {
 
-    table (name = "TRADE", id = 2000) {
+    table (name = "TRADE", id = 2000, audit = details(id = 2100, sequence = "TR")) {
         field("TRADE_ID",STRING).sequence("TR").primaryKey()
+        field("TRADE_DATE",DATE)
+        field("ENTERED_BY",STRING).username().notNull()
+        field("TRADE_STATUS", ENUM("NEW","ALLOCATED","CANCELLED")).default("NEW")
         field("COUNTERPARTY_ID",STRING).notNull()
         field("INSTRUMENT_ID",STRING).notNull()
         field("QUANTITY",INT)
         field("PRICE",DOUBLE).notNull()
         field("SYMBOL",STRING)
         field("DIRECTION", ENUM("BUY","SELL")).default("BUY")
-        field("TRADE_DATE", type = DATE)
-        field("ENTERED_BY", type = STRING)
-        field("TRADE_STATUS", ENUM("NEW", "ALLOCATED", "CANCELLED")).default("NEW")
-
     }
 
     table(name = "POSITION", id = 2003) {

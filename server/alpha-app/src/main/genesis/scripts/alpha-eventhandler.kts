@@ -1,3 +1,7 @@
+import global.genesis.gen.dao.enums.alpha.trade.Direction
+import global.genesis.gen.dao.enums.alpha.trade.TradeStatus
+import java.time.LocalDate
+
 /**
  * System              : Genesis Business Library
  * Sub-System          : multi-pro-code-test Configuration
@@ -10,32 +14,56 @@
  */
 
 
+
 eventHandler {
 
-    eventHandler<Trade>(name = "TRADE_INSERT") {
-        schemaValidation = false
-        onCommit { event ->
-            if(event.details.quantity!! < 0.0){
-                nack("Quantity must be positive")
-            } else{
-                entityDb.insert(event.details)
-                ack()
+    stateMachine(TRADE.TRADE_STATUS){
+
+        // EVENT_TRADE_INSERT
+        insertEvent {
+            initialStates(TradeStatus.NEW)
+
+            onValidate{ trade ->
+                require(LocalDate.of(trade.tradeDate!!.year, trade.tradeDate!!.monthOfYear, trade.tradeDate!!.dayOfMonth) >= LocalDate.of(now().year, now().monthOfYear, now().dayOfMonth))
+            }
+            onEvent { event ->
+                event.withDetails {
+                    enteredBy = event.userName
+                }
             }
         }
-    }
 
+        modifyEvent {
+            mutableStates(TradeStatus.ALLOCATED, TradeStatus.CANCELLED)
 
-    eventHandler<Trade>(name = "TRADE_MODIFY") {
-        onCommit { event ->
-            entityDb.modify(event.details)
-            ack()
-        }
-    }
+            // EVENT_TRADE_ALLOCATED
+            transitionEvent(TradeStatus.ALLOCATED){
+                fromStates(TradeStatus.NEW)
 
-    eventHandler<Trade>(name = "TRADE_DELETE") {
-        onCommit { event ->
-            entityDb.delete(event.details)
-            ack()
+                onValidate{ trade ->
+                    require(LocalDate.of(trade.tradeDate!!.year, trade.tradeDate!!.monthOfYear, trade.tradeDate!!.dayOfMonth +2) >= LocalDate.of(now().year, now().monthOfYear, now().dayOfMonth))
+                }
+
+                onEvent{ event, trade ->
+                    trade.enteredBy = event.userName
+                }
+            }
+
+            // EVENT_TRADE_CANCELLED
+            transitionEvent(TradeStatus.CANCELLED){
+                fromStates(TradeStatus.NEW, TradeStatus.ALLOCATED)
+
+                onValidate{ trade ->
+                    require(trade.direction == Direction.BUY)
+                    require(LocalDate.of(trade.tradeDate!!.year, trade.tradeDate!!.monthOfYear, trade.tradeDate!!.dayOfMonth + 1) >= LocalDate.of(now().year, now().monthOfYear, now().dayOfMonth))
+                }
+
+                onEvent{ event, trade ->
+                    trade.enteredBy = event.userName
+                    trade.tradeDate = now()
+                    trade.tradeStatus = TradeStatus.CANCELLED
+                }
+            }
         }
     }
 
