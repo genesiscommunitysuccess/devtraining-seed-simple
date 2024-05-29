@@ -11,4 +11,17 @@
 
 
 eventHandler {
+
+    eventHandler<Trade>(name = "TRADE_INSERT") {
+        schemaValidation = false
+        onCommit { event ->
+            if(event.details.quantity!! < 0.0){
+                nack("Quantity must be positive")
+            } else{
+                entityDb.insert(event.details)
+                ack()
+            }
+        }
+    }
+
 }

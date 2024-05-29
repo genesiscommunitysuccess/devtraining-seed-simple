@@ -12,5 +12,11 @@ import global.genesis.dictionary.pal.table.TableFieldType
  */
 
 tables {
-
+    table (name = "TRADE", id = 2000) {
+        field("TRADE_ID",STRING).sequence("TR").primaryKey()
+        field("QUANTITY",INT)
+        field("PRICE",DOUBLE).notNull()
+        field("SYMBOL",STRING)
+        field("DIRECTION", ENUM("BUY","SELL")).default("BUY")
+    }
 }

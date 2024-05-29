@@ -15,4 +15,14 @@ package scripts
  */
 
 dataServer {
+    query("ALL_TRADES", TRADE)
+    query("ALL_PRICES", TRADE){
+        where{
+          it.price > 10.0
+        }
+        fields{
+            SYMBOL
+            PRICE
+        }
+    }
 }
