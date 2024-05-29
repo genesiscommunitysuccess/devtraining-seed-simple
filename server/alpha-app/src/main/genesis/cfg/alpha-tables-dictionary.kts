@@ -15,7 +15,7 @@ tables {
 
     table (name = "TRADE", id = 2000) {
         field("TRADE_ID",STRING).sequence("TR").primaryKey()
-        field("COUNTERPARTY_ID",STRING)
+        field("COUNTERPARTY_ID",STRING).notNull()
         field("INSTRUMENT_ID",STRING).notNull()
         field("QUANTITY",INT)
         field("PRICE",DOUBLE).notNull()
