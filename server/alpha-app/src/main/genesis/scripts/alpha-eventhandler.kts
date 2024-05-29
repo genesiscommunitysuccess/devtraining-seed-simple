@@ -24,4 +24,68 @@ eventHandler {
         }
     }
 
+
+    eventHandler<Trade>(name = "TRADE_MODIFY") {
+        onCommit { event ->
+            entityDb.modify(event.details)
+            ack()
+        }
+    }
+
+    eventHandler<Trade>(name = "TRADE_DELETE") {
+        onCommit { event ->
+            entityDb.delete(event.details)
+            ack()
+        }
+    }
+
+    eventHandler<Instrument>(name = "INSTRUMENT_MODIFY") {
+        onCommit { event ->
+            entityDb.modify(event.details)
+            ack()
+        }
+    }
+
+    eventHandler<Instrument>(name = "INSTRUMENT_DELETE") {
+        onCommit { event ->
+            entityDb.delete(event.details)
+            ack()
+        }
+    }
+
+    eventHandler<Instrument>(name = "INSTRUMENT_INSERT") {
+        onCommit { event ->
+            entityDb.insert(event.details)
+            ack()
+        }
+    }
+
+    eventHandler<Trade>(name = "TRADE_DELETE") {
+        onCommit { event ->
+            entityDb.delete(event.details)
+            ack()
+        }
+    }
+
+    eventHandler<Counterparty>(name = "COUNTERPARTY_MODIFY") {
+        onCommit { event ->
+            entityDb.modify(event.details)
+            ack()
+        }
+    }
+
+    eventHandler<Counterparty>(name = "COUNTERPARTY_DELETE") {
+        onCommit { event ->
+            entityDb.delete(event.details)
+            ack()
+        }
+    }
+
+    eventHandler<Counterparty>(name = "COUNTERPARTY_INSERT") {
+        onCommit { event ->
+            entityDb.insert(event.details)
+            ack()
+        }
+    }
+
 }
