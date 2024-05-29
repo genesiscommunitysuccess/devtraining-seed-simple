@@ -11,7 +11,11 @@
 views {
 
     view("TRADE_VIEW", TRADE) {
-
+        joins {
+            joining(COUNTERPARTY) {
+                on(TRADE.COUNTERPARTY_ID to COUNTERPARTY { COUNTERPARTY_ID })
+            }
+        }
         joins {
             joining(INSTRUMENT) {
                 on(TRADE.INSTRUMENT_ID to INSTRUMENT { INSTRUMENT_ID })
@@ -21,6 +25,7 @@ views {
         fields {
             TRADE.allFields()
 
+            COUNTERPARTY.COUNTERPARTY_NAME
             INSTRUMENT.INSTRUMENT_NAME
             INSTRUMENT.MARKET_ID withPrefix INSTRUMENT
             INSTRUMENT.CURRENCY_ID withAlias "CURRENCY"
